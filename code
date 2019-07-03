@@ -1,0 +1,15 @@
+library(quantmod)
+library(dygraphs)
+
+getSymbols('CUUR0000SAF113',src='FRED')
+fruits.and.vegetables <-CUUR0000SAF113
+rm(CUUR0000SAF113)
+
+getSymbols('MCOILBRENTEU',src='FRED')
+brent.europe <-MCOILBRENTEU
+rm(MCOILBRENTEU)
+
+#To create a nice interactive time series graph with a range
+dygraph(brent.europe, main="Brent Europe Oil Price",
+ylab="Index")%>% 
+  dyRangeSelector()
